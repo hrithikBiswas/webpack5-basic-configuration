@@ -3,9 +3,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: "./src/js/index.js",
+    entry: {
+        bootstrap: "./src/js/bootstrap.js",
+        swiper: "./src/js/swiper.js",
+        scrollreveal: "./src/js/scrollreveal.js",
+        index: "./src/js/index.js",
+    },
     output: {
-        filename: "./js/main.js",
+        filename: "./js/[name]-bundle.js",
         path: path.resolve(__dirname, "dist"),
         clean: true,
     },
@@ -70,7 +75,7 @@ module.exports = {
             inject: "body",
         }),
         new MiniCssExtractPlugin({
-            filename: "./css/style.bundle.css",
+            filename: "./css/[name]-bundle.css",
             chunkFilename: "./css/[id].css",
         }),
     ],
